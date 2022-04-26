@@ -1,6 +1,7 @@
 import json
-from tile import Tile
-from goal import Goal
+from .tile import Tile
+from .goal import Goal
+from .robot import Robot
 
 class Game:
     """ Implement a Ricochet Robot Game"""
@@ -12,6 +13,7 @@ class Game:
         self.board_shape = board_shape
         self.board_file = board_file
         self.generate_board()
+        self.robots = [Robot(c, self) for c in ["R", "Y", "B", "G"]]
         
     def generate_board(self):
         # Create a board of appropriate shape with empty tiles
@@ -60,11 +62,11 @@ class Game:
             self.board[i][j].goal = goal
 
 
-    def update_robot_on_board(self, robot: Robot):
+    def init_robot_on_board(self, robot: Robot):
         """Updates a Robot Position on the board."""
-        self.board[robot.row][robot.column] = robot
-        
-        
+        self.board[robot.row][robot.column].robot = robot
+
+
     def display_board(self):
         for row in self.board:
             for tile in row:
@@ -83,6 +85,8 @@ class Game:
                     
                 if tile.goal:
                     print(f'{tile.goal.name}', end='')
+                elif tile.robot:
+                    print(f'R{tile.robot.color}', end='')
                 else:
                     print('  ', end = '')
                 
