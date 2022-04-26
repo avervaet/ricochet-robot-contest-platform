@@ -1,0 +1,20 @@
+INFO:  2022-04-26 13:29:47,516 - sparkmonitorkernel - 1616 - MainProcess -         139894651810048 - MainThread
+ Starting Kernel Extension 
+
+INFO:  2022-04-26 13:29:47,518 - sparkmonitorkernel - 1616 - MainProcess -         139894651810048 - MainThread
+ Socket Listening on port 35068 
+
+INFO:  2022-04-26 13:29:47,518 - sparkmonitorkernel - 1616 - MainProcess -         139892768818944 - Thread-8
+ Starting socket thread, going to accept 
+
+INFO:  2022-04-26 13:29:47,527 - sparkmonitorkernel - 1616 - MainProcess -         139894651810048 - MainThread
+ 35068 
+
+INFO:  2022-04-26 13:29:47,527 - sparkmonitorkernel - 1616 - MainProcess -         139894651810048 - MainThread
+ Adding jar from /opt/notebook/lib64/python3.9/site-packages/jupyterlab_sparkmonitor_osc/listener.jar  
+
+INFO:  2022-04-26 13:29:49,947 - sparkmonitorkernel - 1616 - MainProcess -         139894651810048 - MainThread
+ COMM OPENED MESSAGE: 
+ {'header': {'date': datetime.datetime(2022, 4, 26, 13, 29, 47, 604000, tzinfo=tzlocal()), 'msg_id': '63e58674-bf03-436e-9222-6378c4e65838', 'msg_type': 'comm_open', 'session': 'b7251245-1f9e-4537-860e-ff19c33142e0', 'username': '', 'version': '5.2'}, 'msg_id': '63e58674-bf03-436e-9222-6378c4e65838', 'msg_type': 'comm_open', 'parent_header': {}, 'metadata': {}, 'content': {'comm_id': '11ad5b72-bd78-40ac-9683-bedbd3936f9a', 'target_name': 'SparkMonitor', 'data': {'msgtype': 'openfromfrontend'}}, 'buffers': []} 
+ 
+
