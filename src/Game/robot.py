@@ -1,11 +1,13 @@
 from tile import Tile
+from game import Game
 from random import randrange
 
 class Robot:
     
-    def __init__(self, color:str, board: list[list[Tile]]):
+    def __init__(self, color:str, game: Game):
         self.color = color
-        self.row, self.column = _find_suitable_coordinates(board)
+        self.row, self.column = _find_suitable_coordinates(game.board)
+        game.update_robot_on_board(self)
 
 
     def _find_suitable_coordinates(board: list[list[Tile]]):

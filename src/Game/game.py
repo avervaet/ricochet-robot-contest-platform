@@ -58,6 +58,11 @@ class Game:
         for (i, j, color, pattern) in board_elements.get("goals"):
             goal = Goal(color, pattern)
             self.board[i][j].goal = goal
+
+
+    def update_robot_on_board(self, robot: Robot):
+        """Updates a Robot Position on the board."""
+        self.board[robot.row][robot.column] = robot
         
         
     def display_board(self):
