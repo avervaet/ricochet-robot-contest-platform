@@ -62,9 +62,45 @@ class Game:
             self.board[i][j].goal = goal
 
 
-    def init_robot_on_board(self, robot: Robot):
+    def update_robot_on_board(self, robot: Robot):
         """Updates a Robot Position on the board."""
         self.board[robot.row][robot.column].robot = robot
+
+
+    def move_robot(self, robot: Robot, direction: str):
+        """Moves a robot along the according axis until it hits an obstacle."""
+        if direction == "left":
+            col = robot.column
+            while not self.board[robot.row][col].left_wall and col > 0 and (not
+                    self.board[robot.row][col-1].right_wall):
+                col -= 1
+            self.board[robot.row][robot.column].robot = None
+            robot.column = col
+        elif direction == "right":
+            col = robot.column
+            while not self.board[robot.row][col].right_wall and (col <
+                    self.board_shape) and (not
+                            self.board[robot.row][col+1].left_wall):
+                col += 1
+            self.board[robot.row][robot.column].robot = None
+            robot.column = col
+        elif direction == "up":
+            row = robot.row
+            while (not self.board[row][robot.column].top_wall and row > 0 and
+            (not self.board[row-1][robot.column].bottom_wall)):
+                row -= 1
+            self.board[robot.row][robot.column].robot = None
+            robot.row = row
+        else:  # then we go down.
+            row = robot.row
+            while (not self.board[row][robot.column].bottom_wall and row <
+                    self.board_shape and not
+                    self.board[row+1][robot.column].top_wall):
+                row += 1
+            self.board[robot.row][robot.column].robot = None
+            robot.row = row
+        self.update_robot_on_board(robot)
+
 
 
     def display_board(self):

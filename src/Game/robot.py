@@ -9,7 +9,7 @@ class Robot:
     def __init__(self, color:str, game: Game):
         self.color = color
         self.row, self.column = self._find_suitable_coordinates(game)
-        game.init_robot_on_board(self)
+        game.update_robot_on_board(self)
 
 
     def _find_suitable_coordinates(self, game: Game):
