@@ -69,7 +69,7 @@ class Game:
 
     def move_robot(self, robot: Robot, direction: str):
         """Moves a robot along the according axis until it hits an obstacle."""
-        if direction == "left":
+        if direction == "L":
             col = robot.column
             while not self.board[robot.row][col].left_wall and col > 0 and (not
                     self.board[robot.row][col-1].right_wall) and (not
@@ -77,7 +77,7 @@ class Game:
                 col -= 1
             self.board[robot.row][robot.column].robot = None
             robot.column = col
-        elif direction == "right":
+        elif direction == "R":
             col = robot.column
             while not self.board[robot.row][col].right_wall and (col <
                     self.board_shape) and (not
@@ -86,7 +86,7 @@ class Game:
                 col += 1
             self.board[robot.row][robot.column].robot = None
             robot.column = col
-        elif direction == "up":
+        elif direction == "U":
             row = robot.row
             while (not self.board[row][robot.column].top_wall and row > 0 and
             (not self.board[row-1][robot.column].bottom_wall)) and (not
@@ -94,7 +94,7 @@ class Game:
                 row -= 1
             self.board[robot.row][robot.column].robot = None
             robot.row = row
-        else:  # then we go down.
+        elif direction == "D":  # then we go down.
             row = robot.row
             while (not self.board[row][robot.column].bottom_wall and row <
                     self.board_shape and not
@@ -103,7 +103,10 @@ class Game:
                 row += 1
             self.board[robot.row][robot.column].robot = None
             robot.row = row
+        else:
+            print("Invalid move.")
         self.update_robot_on_board(robot)
+
 
 
 
