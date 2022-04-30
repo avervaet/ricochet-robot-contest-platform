@@ -72,7 +72,8 @@ class Game:
         if direction == "left":
             col = robot.column
             while not self.board[robot.row][col].left_wall and col > 0 and (not
-                    self.board[robot.row][col-1].right_wall):
+                    self.board[robot.row][col-1].right_wall) and (not
+                            self.board[robot.row][col-1].robot):
                 col -= 1
             self.board[robot.row][robot.column].robot = None
             robot.column = col
@@ -80,14 +81,16 @@ class Game:
             col = robot.column
             while not self.board[robot.row][col].right_wall and (col <
                     self.board_shape) and (not
-                            self.board[robot.row][col+1].left_wall):
+                            self.board[robot.row][col+1].left_wall) and (not
+                                    self.board[robot.row][col+1].robot):
                 col += 1
             self.board[robot.row][robot.column].robot = None
             robot.column = col
         elif direction == "up":
             row = robot.row
             while (not self.board[row][robot.column].top_wall and row > 0 and
-            (not self.board[row-1][robot.column].bottom_wall)):
+            (not self.board[row-1][robot.column].bottom_wall)) and (not
+                    self.board[row-1][robot.column].robot):
                 row -= 1
             self.board[robot.row][robot.column].robot = None
             robot.row = row
@@ -95,7 +98,8 @@ class Game:
             row = robot.row
             while (not self.board[row][robot.column].bottom_wall and row <
                     self.board_shape and not
-                    self.board[row+1][robot.column].top_wall):
+                    self.board[row+1][robot.column].top_wall) and (not
+                            self.board[row+1][robot.column].robot):
                 row += 1
             self.board[robot.row][robot.column].robot = None
             robot.row = row
@@ -119,10 +123,10 @@ class Game:
                 else:
                     print(' ', end = '')
                     
-                if tile.goal:
-                    print(f'{tile.goal.name}', end='')
-                elif tile.robot:
+                if tile.robot:
                     print(f'R{tile.robot.color}', end='')
+                elif tile.goal:
+                    print(f'{tile.goal.name}', end='')
                 else:
                     print('  ', end = '')
                 
